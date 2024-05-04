@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, Typography, Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -36,6 +36,11 @@ const useStyles = makeStyles(theme => ({
 
 function JobCard({ job }) {
   const classes = useStyles();
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <Card className={classes.card}>
@@ -43,7 +48,10 @@ function JobCard({ job }) {
         <Typography variant="h6" className={classes.title}>{job.title}</Typography>
         <Typography variant="body2" className={classes.company}>{job.company}</Typography>
         <Typography variant="body2" className={classes.location}>{job.location}</Typography>
-        <Typography variant="body1" className={classes.description}>{job.description}</Typography>
+        <Typography variant="body1" className={classes.description} 
+                    onClick={handleExpandClick}>
+          {expanded ? job.description : `${job.description.slice(0, 100)}... (Click to expand)`}
+        </Typography>
         <Typography variant="body2" className={classes.experience}>Experience: {job.experience}</Typography>
         <Grid container justify="flex-end" className={classes.applyButton}>
           <Button variant="contained" color="primary">Apply</Button>
