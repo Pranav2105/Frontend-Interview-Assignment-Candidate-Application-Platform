@@ -4,6 +4,7 @@ import { Button, TextField, Grid } from '@material-ui/core';
 function Filters({ onFilterChange }) {
   const [filters, setFilters] = useState({
     companyName: '',
+    searchQuery: '', // New state for search query
   });
 
   const handleInputChange = (e) => {
@@ -24,6 +25,15 @@ function Filters({ onFilterChange }) {
           label="Company Name"
           name="companyName"
           value={filters.companyName}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          fullWidth
+          label="Search Jobs"
+          name="searchQuery"
+          value={filters.searchQuery}
           onChange={handleInputChange}
         />
       </Grid>
