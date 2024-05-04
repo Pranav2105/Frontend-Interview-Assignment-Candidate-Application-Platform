@@ -15,3 +15,19 @@ This project is a candidate application platform built using ReactJs, Redux, CSS
 
    ```bash
    git clone https://github.com/your-username/candidate-application-platform.git
+
+
+## Navigate to the project directory:
+2. cd candidate-application-platform
+
+## Install dependencies:
+npm install
+## Start development server:
+npm start
+Open http://localhost:3000 to view it in the browser.
+
+## Usage
+
+Browse job listings on the homepage.
+Use filters on the sidebar to refine job listings.
+Click on the "Apply" button/link to apply to a job.
