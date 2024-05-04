@@ -4,7 +4,12 @@ import { Button, TextField, Grid } from '@material-ui/core';
 function Filters({ onFilterChange }) {
   const [filters, setFilters] = useState({
     companyName: '',
-    searchQuery: '', // New state for search query
+    minExperience: '', // New state for minimum experience
+    location: '', // New state for location
+    remote: '', // New state for remote/on-site
+    techStack: '', // New state for tech stack
+    role: '', // New state for role
+    minBasePay: '', // New state for minimum base pay
   });
 
   const handleInputChange = (e) => {
@@ -31,9 +36,54 @@ function Filters({ onFilterChange }) {
       <Grid item xs={12} sm={6}>
         <TextField
           fullWidth
-          label="Search Jobs"
-          name="searchQuery"
-          value={filters.searchQuery}
+          label="Min Experience"
+          name="minExperience"
+          value={filters.minExperience}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          fullWidth
+          label="Location"
+          name="location"
+          value={filters.location}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          fullWidth
+          label="Remote/On-site"
+          name="remote"
+          value={filters.remote}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          fullWidth
+          label="Tech Stack"
+          name="techStack"
+          value={filters.techStack}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          fullWidth
+          label="Role"
+          name="role"
+          value={filters.role}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <TextField
+          fullWidth
+          label="Min Base Pay"
+          name="minBasePay"
+          value={filters.minBasePay}
           onChange={handleInputChange}
         />
       </Grid>
