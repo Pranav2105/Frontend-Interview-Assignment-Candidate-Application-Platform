@@ -1,6 +1,8 @@
 import { FETCH_JOBS_REQUEST, FETCH_JOBS_SUCCESS, FETCH_JOBS_FAILURE } from './actionTypes';
 
-export const fetchJobs = () => {
+// redux/actions.js
+
+export const fetchJobs = (offset = 0) => {
   return dispatch => {
     dispatch(fetchJobsRequest());
     fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
@@ -10,7 +12,7 @@ export const fetchJobs = () => {
       },
       body: JSON.stringify({
         "limit": 10,
-        "offset": 0
+        "offset": offset // Use the provided offset parameter
       })
     })
     .then(response => response.json())
@@ -20,25 +22,5 @@ export const fetchJobs = () => {
     .catch(error => {
       dispatch(fetchJobsFailure(error.message));
     });
-  };
-};
-
-const fetchJobsRequest = () => {
-  return {
-    type: FETCH_JOBS_REQUEST
-  };
-};
-
-const fetchJobsSuccess = jobs => {
-  return {
-    type: FETCH_JOBS_SUCCESS,
-    payload: jobs
-  };
-};
-
-const fetchJobsFailure = error => {
-  return {
-    type: FETCH_JOBS_FAILURE,
-    payload: error
   };
 };
