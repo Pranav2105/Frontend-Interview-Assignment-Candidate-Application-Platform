@@ -10,6 +10,7 @@ function App() {
   const jobs = useSelector(state => state.jobs);
   const loading = useSelector(state => state.loading);
   const [filteredJobs, setFilteredJobs] = useState([]);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     dispatch(fetchJobs());
@@ -18,6 +19,23 @@ function App() {
   useEffect(() => {
     setFilteredJobs(jobs); // Initially, display all jobs
   }, [jobs]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScroll = () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      // Fetch more jobs when user scrolls to the bottom
+      fetchMoreJobs();
+    }
+  };
+
+  const fetchMoreJobs = () => {
+    setOffset(prevOffset => prevOffset + 10); // Increment offset
+    dispatch(fetchJobs(offset)); // Fetch jobs with updated offset
+  };
 
   // Function to filter jobs based on selected filter criteria
   const handleFilterChange = (filters) => {
