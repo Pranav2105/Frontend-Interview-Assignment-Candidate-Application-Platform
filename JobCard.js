@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     color: '#333333',
     marginTop: theme.spacing(1),
     lineHeight: 1.5,
+    cursor: 'pointer', // Add pointer cursor for expandable description
   },
   experience: {
     color: '#666666',
